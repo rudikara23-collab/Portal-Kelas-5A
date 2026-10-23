@@ -5,32 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruang Belajar Kelas 5A - SD Negeri 13 Pedungan</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; padding: 0; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
-        .header { text-align: center; background: #4CAF50; color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
-        .login-section, .dashboard, .teacher-dashboard { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        * { box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f4f7f6; margin: 0; padding: 10px; color: #333; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header { text-align: center; background: linear-gradient(135deg, #4CAF50, #2E7D32); color: white; padding: 20px 15px; border-radius: 12px; margin-bottom: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .header h1 { margin: 0; font-size: 22px; }
+        .header p { margin: 5px 0 0 0; font-size: 14px; opacity: 0.9; }
+        .login-section, .dashboard, .teacher-dashboard { background: white; padding: 18px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 15px; }
         .hidden { display: none !important; }
-        select, input, button, textarea { padding: 10px; margin: 8px 0; width: 100%; box-sizing: border-box; font-family: inherit; border: 1px solid #ccc; border-radius: 4px; }
-        button { background-color: #4CAF50; color: white; border: none; cursor: pointer; font-size: 16px; border-radius: 5px; transition: 0.3s; }
-        button:hover { background-color: #45a049; }
-        .subject-card { background: #e3f2fd; border-left: 5px solid #2196f3; padding: 15px; margin-bottom: 15px; border-radius: 4px; cursor: pointer; transition: 0.2s;}
-        .subject-card:hover { transform: translateX(5px); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px; }
-        .menu-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px; text-align: center; cursor: pointer; transition: 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
-        .menu-card:hover { transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .menu-card h3 { margin: 10px 0 5px 0; color: #2c3e50; }
-        .tabs { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
-        .tab { padding: 10px 20px; background: #ddd; cursor: pointer; border-radius: 4px; font-weight: bold; }
+        select, input, button, textarea { padding: 12px; margin: 6px 0; width: 100%; font-size: 15px; border: 1px solid #ccc; border-radius: 8px; font-family: inherit; }
+        button { background-color: #4CAF50; color: white; border: none; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        button:active { transform: scale(0.98); }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 15px; }
+        .menu-card { background: #f8f9fa; border: 1px solid #e0e0e0; border-radius: 10px; padding: 12px 8px; text-align: center; cursor: pointer; transition: 0.2s; }
+        .menu-card:active { background: #e3f2fd; }
+        .menu-card h3 { margin: 6px 0 2px 0; color: #2c3e50; font-size: 15px; }
+        .menu-card p { margin: 0; font-size: 11px; color: #666; }
+        .tabs { display: flex; gap: 6px; margin-bottom: 12px; overflow-x: auto; padding-bottom: 4px; }
+        .tab { flex: 1; text-align: center; padding: 10px 12px; background: #eee; cursor: pointer; border-radius: 6px; font-weight: bold; font-size: 13px; white-space: nowrap; }
         .tab.active { background: #2196f3; color: white; }
-        .content-section { display: none; background: #fafafa; padding: 15px; border: 1px solid #eee; border-radius: 4px; }
+        .content-section { display: none; background: #fafafa; padding: 12px; border: 1px solid #eee; border-radius: 8px; }
         .content-section.active { display: block; }
-        .form-group { margin-bottom: 15px; text-align: left; }
-        .question-box { background: white; padding: 15px; border: 1px solid #ddd; border-radius: 5px; margin-bottom: 15px; text-align: left; }
-        .option-label { display: block; margin: 8px 0; cursor: pointer; font-weight: normal; }
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        .form-group { margin-bottom: 12px; text-align: left; }
+        .form-group label { font-size: 13px; font-weight: bold; display: block; margin-bottom: 4px; }
+        .question-box { background: white; padding: 12px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 10px; }
+        .option-label { display: block; margin: 8px 0; font-weight: normal; font-size: 14px; }
+        .table-responsive { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 13px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
         th { background-color: #2196f3; color: white; }
-        .img-preview { max-width: 100%; height: auto; border-radius: 8px; margin-top: 10px; border: 1px solid #ddd; }
+        .img-preview { max-width: 100%; height: auto; border-radius: 8px; margin-top: 8px; border: 1px solid #ddd; }
+        .subject-card { background: #e3f2fd; border-left: 4px solid #2196f3; padding: 12px; margin-bottom: 10px; border-radius: 6px; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -42,14 +47,14 @@
 
         <!-- LOGIN SECTION -->
         <div id="login-section" class="login-section">
-            <h2>Masuk ke Ruang Belajar</h2>
+            <h2 style="margin-top:0; font-size:18px;">Masuk ke Ruang Belajar</h2>
             <div class="tabs">
                 <div class="tab active" onclick="switchLogin(this, 'siswa')">Masuk Siswa</div>
                 <div class="tab" onclick="switchLogin(this, 'guru')">Masuk Guru</div>
             </div>
             
             <div id="form-siswa">
-                <label>Pilih Nama Kamu:</label>
+                <label style="font-size:13px; font-weight:bold;">Pilih Nama Kamu:</label>
                 <select id="student-name">
                     <option value="">-- Pilih Nama Lengkap --</option>
                     <option value="DESAK PUTU GEBY WIJAYANI">DESAK PUTU GEBY WIJAYANI</option>
@@ -86,13 +91,13 @@
                     <option value="ZAVRINA QIANDRA ALMAHYRA PRAYATA">ZAVRINA QIANDRA ALMAHYRA PRAYATA</option>
                     <option value="I KOMANG GEDE ANDILAN PRATISTA P.">I KOMANG GEDE ANDILAN PRATISTA P.</option>
                 </select>
-                <label>Kode PIN Siswa:</label>
-                <input type="password" id="student-pin" placeholder="Masukkan 4 angka Kode PIN Siswa">
+                <label style="font-size:13px; font-weight:bold;">Kode PIN Siswa:</label>
+                <input type="password" id="student-pin" placeholder="Masukkan 4 angka PIN Siswa">
                 <button onclick="loginSiswa()">Mulai Belajar</button>
             </div>
 
             <div id="form-guru" class="hidden">
-                <label>PIN Rahasia Guru:</label>
+                <label style="font-size:13px; font-weight:bold;">PIN Rahasia Guru:</label>
                 <input type="password" id="pin-guru" placeholder="Masukkan PIN Rahasia Guru">
                 <button onclick="loginGuru()">Masuk sebagai Guru</button>
             </div>
@@ -100,44 +105,44 @@
 
         <!-- DASHBOARD SISWA -->
         <div id="student-dashboard" class="dashboard hidden">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <h2 id="welcome-siswa">Selamat Datang!</h2>
-                <button onclick="logout()" style="background-color: #f44336; width: auto; padding: 8px 15px;">Keluar</button>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h3 id="welcome-siswa" style="margin:0; font-size:16px; color:#2E7D32;">Selamat Datang!</h3>
+                <button onclick="logout()" style="background-color: #f44336; width: auto; padding: 6px 12px; font-size:12px;">Keluar</button>
             </div>
 
             <div class="menu-grid">
                 <div class="menu-card" onclick="showSection('subject-list')">
-                    <h3>📚 Mata Pelajaran</h3>
-                    <p style="font-size:12px; color:#666;">Materi, Kuis & Tugas</p>
+                    <h3>📚 Mapel</h3>
+                    <p>Materi & Tugas</p>
                 </div>
                 <div class="menu-card" onclick="showSection('section-nilai-siswa')">
-                    <h3>📊 Daftar Nilai Sumatif</h3>
-                    <p style="font-size:12px; color:#666;">STS-1, SAS-1, STS-2, SAT</p>
+                    <h3>📊 Nilai</h3>
+                    <p>Sumatif Semester</p>
                 </div>
                 <div class="menu-card" onclick="showSection('section-absensi')">
-                    <h3>✋ Absensi Harian</h3>
-                    <p style="font-size:12px; color:#666;">Isi Kehadiran Hari Ini</p>
+                    <h3>✋ Absen</h3>
+                    <p>Hadir Hari Ini</p>
                 </div>
                 <div class="menu-card" onclick="showSection('section-jadwal')">
-                    <h3>📅 Jadwal Pelajaran</h3>
-                    <p style="font-size:12px; color:#666;">Jadwal Seminggu</p>
+                    <h3>📅 Jadwal</h3>
+                    <p>Jadwal Seminggu</p>
                 </div>
                 <div class="menu-card" onclick="showSection('section-pengumuman')">
-                    <h3>📢 Pengumuman</h3>
-                    <p style="font-size:12px; color:#666;">Info Terbaru Kelas</p>
+                    <h3>📢 Info</h3>
+                    <p>Pengumuman</p>
                 </div>
             </div>
 
             <div id="subject-list" class="main-section"></div>
             
             <div id="subject-detail" class="main-section hidden">
-                <button onclick="backToSubjects()" style="background-color: #607d8b; width: auto; padding: 8px 15px; margin-bottom: 15px;">&larr; Kembali ke Daftar Mapel</button>
-                <h3 id="detail-title" style="color: #2196f3; font-size: 24px; border-bottom: 2px solid #2196f3; padding-bottom: 10px;">Nama Mapel</h3>
+                <button onclick="backToSubjects()" style="background-color: #607d8b; width: auto; padding: 6px 12px; font-size:12px; margin-bottom: 10px;">&larr; Kembali ke Mapel</button>
+                <h3 id="detail-title" style="color: #2196f3; font-size: 18px; margin-top:0; border-bottom: 2px solid #2196f3; padding-bottom: 6px;">Nama Mapel</h3>
                 
                 <div class="tabs">
-                    <div class="tab active" onclick="switchDetailTab(this, 'materi')">Materi Pembelajaran</div>
-                    <div class="tab" onclick="switchDetailTab(this, 'soal')">Soal / Kuis</div>
-                    <div class="tab" onclick="switchDetailTab(this, 'tugas')">Pengumpulan Tugas</div>
+                    <div class="tab active" onclick="switchDetailTab(this, 'materi')">Materi</div>
+                    <div class="tab" onclick="switchDetailTab(this, 'soal')">Kuis PG</div>
+                    <div class="tab" onclick="switchDetailTab(this, 'tugas')">Kumpul Tugas</div>
                 </div>
                 
                 <div id="content-materi" class="content-section active"></div>
@@ -146,54 +151,54 @@
             </div>
 
             <div id="section-nilai-siswa" class="main-section hidden">
-                <h3>Transkrip Nilai Sumatif Kamu</h3>
-                <div id="display-nilai-sumatif" style="background: white; padding: 15px; border-radius: 8px;"></div>
+                <h3 style="margin-top:0;">Transkrip Nilai Sumatif</h3>
+                <div id="display-nilai-sumatif" class="table-responsive"></div>
             </div>
 
             <div id="section-absensi" class="main-section hidden">
-                <h3>Form Kehadiran Siswa Hari Ini</h3>
-                <div style="background: white; padding: 20px; border-radius: 8px; border: 1px solid #e0e0e0;">
-                    <p id="absensi-status-text">Silakan klik tombol di bawah untuk mengisi kehadiran Anda hari ini.</p>
-                    <button id="btn-isi-absen" onclick="kirimAbsensi()" style="background-color: #4CAF50; padding: 12px;">Hadir Hari Ini</button>
+                <h3 style="margin-top:0;">Absensi Harian Siswa</h3>
+                <div style="background: white; padding: 15px; border-radius: 8px; border: 1px solid #e0e0e0;">
+                    <p id="absensi-status-text" style="font-size:14px;">Silakan klik tombol di bawah untuk mengisi kehadiran Anda hari ini.</p>
+                    <button id="btn-isi-absen" onclick="kirimAbsensi()" style="background-color: #4CAF50;">Hadir Hari Ini</button>
                 </div>
             </div>
 
             <div id="section-jadwal" class="main-section hidden">
-                <h3>Jadwal Pelajaran Kelas 5A</h3>
-                <div id="display-jadwal" style="background: white; padding: 15px; border-radius: 8px;"></div>
+                <h3 style="margin-top:0;">Jadwal Pelajaran Kelas 5A</h3>
+                <div id="display-jadwal" class="table-responsive"></div>
             </div>
 
             <div id="section-pengumuman" class="main-section hidden">
-                <h3>Pengumuman Kelas 5A</h3>
-                <div id="display-pengumuman" style="background: white; padding: 15px; border-radius: 8px;"></div>
+                <h3 style="margin-top:0;">Pengumuman Kelas 5A</h3>
+                <div id="display-pengumuman"></div>
             </div>
         </div>
 
         <!-- DASHBOARD GURU -->
         <div id="teacher-dashboard" class="teacher-dashboard hidden">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <h2>Selamat Datang, Bapak I Komang Rodykara, S.Pd</h2>
-                <button onclick="logout()" style="background-color: #f44336; width: auto; padding: 8px 15px;">Keluar Panel</button>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h3 style="margin:0; font-size:16px; color:#9C27B0;">Panel Guru Kelas 5A</h3>
+                <button onclick="logout()" style="background-color: #f44336; width: auto; padding: 6px 12px; font-size:12px;">Keluar</button>
             </div>
 
             <!-- FORM INPUT NILAI SUMATIF GURU -->
-            <div class="subject-card" style="background: #fff; border: 1px solid #ddd; border-left: 5px solid #e91e63;">
-                <h3 style="color:#e91e63; margin-top:0;">Input / Terbitkan Nilai Sumatif Siswa</h3>
+            <div class="subject-card" style="background: #fff; border: 1px solid #ddd; border-left: 4px solid #e91e63;">
+                <h4 style="color:#e91e63; margin-top:0;">1. Input Nilai Sumatif Siswa</h4>
                 <div class="form-group">
                     <label>Pilih Siswa:</label>
                     <select id="admin-nilai-siswa-select"></select>
                 </div>
                 <div class="form-group">
-                    <label>Pilih Jenis Ujian Sumatif:</label>
+                    <label>Jenis Ujian:</label>
                     <select id="admin-nilai-jenis">
-                        <option value="STS1">STS-1 (Sumatif Tengah Semester 1)</option>
-                        <option value="SAS1">SAS-1 (Sumatif Akhir Semester 1)</option>
-                        <option value="STS2">STS-2 (Sumatif Tengah Semester 2)</option>
-                        <option value="SAT">SAT (Sumatif Akhir Tahun)</option>
+                        <option value="STS1">STS-1 (Tengah Semester 1)</option>
+                        <option value="SAS1">SAS-1 (Akhir Semester 1)</option>
+                        <option value="STS2">STS-2 (Tengah Semester 2)</option>
+                        <option value="SAT">SAT (Akhir Tahun)</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Pilih Mata Pelajaran:</label>
+                    <label>Mata Pelajaran:</label>
                     <select id="admin-nilai-mapel">
                         <option>Bahasa Indonesia</option>
                         <option>Pendidikan Pancasila</option>
@@ -204,17 +209,17 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Nilai (Angka 0 - 100):</label>
-                    <input type="number" id="admin-nilai-angka" placeholder="Masukkan nilai, contoh: 88">
+                    <label>Nilai (0 - 100):</label>
+                    <input type="number" id="admin-nilai-angka" placeholder="Contoh: 88">
                 </div>
                 <button onclick="simpanNilaiSumatif()" style="background-color: #e91e63;">Simpan & Terbitkan Nilai</button>
             </div>
 
             <!-- FORM BUAT MATERI DENGAN GAMBAR -->
-            <div class="subject-card" style="background: #fff; border: 1px solid #ddd; border-left: 5px solid #ff9800;">
-                <h3 style="color:#e65100; margin-top:0;">Tambahkan Materi / Tugas Harian (Dengan Gambar)</h3>
+            <div class="subject-card" style="background: #fff; border: 1px solid #ddd; border-left: 4px solid #ff9800;">
+                <h4 style="color:#e65100; margin-top:0;">2. Terbitkan Materi / Tugas (Foto)</h4>
                 <div class="form-group">
-                    <label>Pilih Mata Pelajaran:</label>
+                    <label>Mata Pelajaran:</label>
                     <select id="admin-mapel">
                         <option>Bahasa Indonesia</option>
                         <option>Pendidikan Pancasila</option>
@@ -232,41 +237,39 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Isi Konten (Teks Materi atau Instruksi Tugas):</label>
-                    <textarea id="admin-isi" rows="4" placeholder="Ketik materi atau instruksi tugas di sini..."></textarea>
+                    <label>Isi Teks Materi / Tugas:</label>
+                    <textarea id="admin-isi" rows="3" placeholder="Ketik materi atau instruksi di sini..."></textarea>
                 </div>
                 <div class="form-group">
-                    <label>Unggah Gambar Materi / Soal (Opsional):</label>
+                    <label>Unggah Gambar (Opsional):</label>
                     <input type="file" id="admin-file-gambar" accept="image/*">
                 </div>
-                <button onclick="simpanKontenGuru()" style="background-color: #ff9800;">Terbitkan Materi / Tugas</button>
+                <button onclick="simpanKontenGuru()" style="background-color: #ff9800;">Terbitkan Konten</button>
             </div>
 
-            <div class="subject-card" style="background: #fff; border: 1px solid #ddd; border-left: 5px solid #009688;">
-                <h3 style="color:#009688; margin-top:0;">Pengaturan Jadwal Pelajaran (Senin - Sabtu)</h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                    <div><label><b>Senin:</b></label><input type="text" id="jadwal-senin" placeholder="Upacara, Bahasa Indonesia, Pendidikan Pancasila"></div>
-                    <div><label><b>Selasa:</b></label><input type="text" id="jadwal-selasa" placeholder="Matematika, IPAS"></div>
-                    <div><label><b>Rabu:</b></label><input type="text" id="jadwal-rabu" placeholder="Seni Rupa, Koding Kecerdasan Artifisial"></div>
-                    <div><label><b>Kamis:</b></label><input type="text" id="jadwal-kamis" placeholder="Bahasa Indonesia, Matematika"></div>
-                    <div><label><b>Jumat:</b></label><input type="text" id="jadwal-jumat" placeholder="Olahraga, IPAS"></div>
-                    <div><label><b>Sabtu:</b></label><input type="text" id="jadwal-sabtu" placeholder="Pramuka, Ekstrakurikuler"></div>
-                </div>
-                <button onclick="simpanJadwalHarian()" style="background-color: #009688; margin-top:15px;">Simpan & Update Jadwal</button>
+            <div class="subject-card" style="background: #fff; border: 1px solid #ddd; border-left: 4px solid #009688;">
+                <h4 style="color:#009688; margin-top:0;">3. Update Jadwal Pelajaran</h4>
+                <div class="form-group"><label>Senin:</label><input type="text" id="jadwal-senin" placeholder="Upacara, B.Indo"></div>
+                <div class="form-group"><label>Selasa:</label><input type="text" id="jadwal-selasa" placeholder="Matematika, IPAS"></div>
+                <div class="form-group"><label>Rabu:</label><input type="text" id="jadwal-rabu" placeholder="Seni Rupa, Koding AI"></div>
+                <div class="form-group"><label>Kamis:</label><input type="text" id="jadwal-kamis" placeholder="B.Indo, MTK"></div>
+                <div class="form-group"><label>Jumat:</label><input type="text" id="jadwal-jumat" placeholder="Olahraga, IPAS"></div>
+                <div class="form-group"><label>Sabtu:</label><input type="text" id="jadwal-sabtu" placeholder="Pramuka"></div>
+                <button onclick="simpanJadwalHarian()" style="background-color: #009688;">Simpan Jadwal</button>
             </div>
 
-            <div class="subject-card" style="background: #fff; border: 1px solid #ddd; border-left: 5px solid #9c27b0;">
-                <h3 style="color:#9c27b0; margin-top:0;">Buat Pengumuman Kelas Baru</h3>
+            <div class="subject-card" style="background: #fff; border: 1px solid #ddd; border-left: 4px solid #9c27b0;">
+                <h4 style="color:#9c27b0; margin-top:0;">4. Buat Pengumuman</h4>
                 <div class="form-group">
-                    <textarea id="admin-pengumuman-text" rows="3" placeholder="Ketik pengumuman penting untuk siswa di sini..."></textarea>
+                    <textarea id="admin-pengumuman-text" rows="2" placeholder="Ketik info pengumuman..."></textarea>
                 </div>
                 <button onclick="simpanPengumuman()" style="background-color: #9c27b0;">Terbitkan Pengumuman</button>
             </div>
 
-            <div class="subject-card" style="background: #fff; border: 1px solid #ddd; border-left: 5px solid #2196f3;">
-                <h3 style="color:#2196f3; margin-top:0;">Buat Soal Kuis Pilihan Ganda (Otomatis Dinilai)</h3>
+            <div class="subject-card" style="background: #fff; border: 1px solid #ddd; border-left: 4px solid #2196f3;">
+                <h4 style="color:#2196f3; margin-top:0;">5. Buat Kuis Pilihan Ganda</h4>
                 <div class="form-group">
-                    <label>Pilih Mata Pelajaran:</label>
+                    <label>Mata Pelajaran:</label>
                     <select id="builder-mapel">
                         <option>Bahasa Indonesia</option>
                         <option>Pendidikan Pancasila</option>
@@ -277,17 +280,15 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>Teks Pertanyaan / Soal:</label>
-                    <textarea id="builder-soal" rows="2" placeholder="Contoh: Apakah simbol dari Sila ke-3 Pancasila?"></textarea>
+                    <label>Soal Kuis:</label>
+                    <textarea id="builder-soal" rows="2" placeholder="Teks soal..."></textarea>
                 </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                    <input type="text" id="builder-optA" placeholder="Pilihan A">
-                    <input type="text" id="builder-optB" placeholder="Pilihan B">
-                    <input type="text" id="builder-optC" placeholder="Pilihan C">
-                    <input type="text" id="builder-optD" placeholder="Pilihan D">
-                </div>
-                <div class="form-group" style="margin-top:10px;">
-                    <label>Kunci Jawaban yang Benar:</label>
+                <input type="text" id="builder-optA" placeholder="Opsi A">
+                <input type="text" id="builder-optB" placeholder="Opsi B">
+                <input type="text" id="builder-optC" placeholder="Opsi C">
+                <input type="text" id="builder-optD" placeholder="Opsi D">
+                <div class="form-group" style="margin-top:8px;">
+                    <label>Kunci Jawaban Benar:</label>
                     <select id="builder-kunci">
                         <option value="0">Jawaban A</option>
                         <option value="1">Jawaban B</option>
@@ -295,13 +296,19 @@
                         <option value="3">Jawaban D</option>
                     </select>
                 </div>
-                <button onclick="tambahSoalKeKuis()" style="background-color: #2196f3;">+ Tambahkan Soal Ini ke Kuis</button>
+                <button onclick="tambahSoalKeKuis()" style="background-color: #2196f3;">+ Tambah Soal Kuis</button>
             </div>
 
-            <div class="subject-card" style="background: #fff; border: 1px solid #ddd; border-left: 5px solid #4CAF50;">
-                <h3>Database Nilai & Rekapitulasi</h3>
+            <div class="subject-card" style="background: #fff; border: 1px solid #ddd; border-left: 4px solid #f44336;">
+                <h4 style="color:#f44336; margin-top:0;">6. Reset Data Kuis/Tugas</h4>
+                <button onclick="resetDataKuis()" style="background-color: #f44336; margin-bottom: 8px;">Reset Status Kuis Browser Ini</button>
+                <button onclick="resetKontenGuru()" style="background-color: #ff5722;">Reset Semua Konten Guru</button>
+            </div>
+
+            <div class="subject-card" style="background: #fff; border: 1px solid #ddd; border-left: 4px solid #4CAF50;">
+                <h4 style="color:#2E7D32; margin-top:0;">7. Database Spreadsheet</h4>
                 <a href="https://docs.google.com/spreadsheets/d/1NtNhZjviExtFjleiRsRQhvj1yf4PxSiX1ZrkZsu40Jw/edit" target="_blank" style="text-decoration: none;">
-                    <button style="background-color: #4CAF50; margin-top: 10px;">Buka Google Spreadsheet Kelas 5A</button>
+                    <button style="background-color: #4CAF50;">Buka Google Spreadsheet</button>
                 </a>
             </div>
         </div>
@@ -369,7 +376,7 @@
                 currentUser = name;
                 document.getElementById('login-section').classList.add('hidden');
                 document.getElementById('student-dashboard').classList.remove('hidden');
-                document.getElementById('welcome-siswa').innerText = `Halo, ${name}! Semangat belajar hari ini!`;
+                document.getElementById('welcome-siswa').innerText = `Halo, ${name}!`;
                 
                 loadServerData();
                 renderSubjects();
@@ -417,7 +424,7 @@
             subjects.forEach(sub => {
                 const div = document.createElement('div');
                 div.className = 'subject-card';
-                div.innerHTML = `<h3 style="margin-top:0;">${sub}</h3><p style="margin-bottom:0; color:#555;">Buka materi, kerjakan kuis, atau kumpul tugas.</p>`;
+                div.innerHTML = `<h4 style="margin:0 0 4px 0; color:#2196f3;">${sub}</h4><p style="margin:0; font-size:12px; color:#555;">Buka materi, kuis & tugas</p>`;
                 div.onclick = () => openSubject(sub);
                 list.appendChild(div);
             });
@@ -450,7 +457,7 @@
             const mapel = document.getElementById('admin-nilai-mapel').value;
             const nilai = document.getElementById('admin-nilai-angka').value;
 
-            if(!nilai) return alert("Masukkan nilai angka terlebih dahulu!");
+            if(!nilai) return alert("Masukkan nilai angka!");
 
             let key = `sumatif_${siswa}`;
             let dataNilai = JSON.parse(localStorage.getItem(key)) || {};
@@ -459,7 +466,7 @@
 
             localStorage.setItem(key, JSON.stringify(dataNilai));
             saveToServer(key, dataNilai);
-            alert(`Berhasil! Nilai ${jenis} untuk ${siswa} pada mapel ${mapel} telah disimpan.`);
+            alert(`Nilai ${jenis} untuk ${siswa} berhasil diterbitkan.`);
             
             kirimDataKeSpreadsheet(siswa, mapel, `Nilai Sumatif (${jenis})`, nilai);
             document.getElementById('admin-nilai-angka').value = "";
@@ -472,7 +479,7 @@
             let html = `
                 <table>
                     <tr>
-                        <th>Mata Pelajaran</th>
+                        <th>Mapel</th>
                         <th>STS-1</th>
                         <th>SAS-1</th>
                         <th>STS-2</th>
@@ -505,7 +512,7 @@
             const isi = document.getElementById('admin-isi').value;
             const fileInput = document.getElementById('admin-file-gambar');
 
-            if(!isi.trim() && fileInput.files.length === 0) return alert("Isi teks materi atau unggah foto terlebih dahulu!");
+            if(!isi.trim() && fileInput.files.length === 0) return alert("Isi materi atau pilih foto!");
 
             if(fileInput.files.length > 0) {
                 const reader = new FileReader();
@@ -517,7 +524,7 @@
                     localStorage.setItem(key, JSON.stringify(payload));
                     saveToServer(key, payload);
 
-                    alert(`${jenis} ber-gambar untuk ${mapel} telah berhasil diterbitkan!`);
+                    alert(`${jenis} ber-gambar berhasil diterbitkan!`);
                     kirimDataKeSpreadsheet("GURU", mapel, `Terbit ${jenis}`, isi, imgData, "materi.jpg", "image/jpeg");
                     document.getElementById('admin-isi').value = "";
                     fileInput.value = "";
@@ -530,7 +537,7 @@
                 localStorage.setItem(key, JSON.stringify(payload));
                 saveToServer(key, payload);
 
-                alert(`${jenis} untuk ${mapel} telah berhasil diterbitkan!`);
+                alert(`${jenis} berhasil diterbitkan!`);
                 kirimDataKeSpreadsheet("GURU", mapel, `Terbit ${jenis}`, isi);
                 document.getElementById('admin-isi').value = "";
             }
@@ -541,13 +548,13 @@
             const container = document.getElementById('content-materi');
             if(raw) {
                 let data = JSON.parse(raw);
-                let html = `<div style="background:white; padding:15px; border-radius:5px; line-height:1.6; border-left:4px solid #2196f3;"><h4 style="margin-top:0; color:#2196f3;">Materi dari Bapak Guru:</h4>`;
-                if(data.text) html += `<p style="white-space: pre-line;">${data.text}</p>`;
+                let html = `<div style="background:white; padding:12px; border-radius:6px; line-height:1.5; border-left:4px solid #2196f3;"><h4 style="margin-top:0; color:#2196f3;">Materi Guru:</h4>`;
+                if(data.text) html += `<p style="white-space: pre-line; margin-bottom:8px;">${data.text}</p>`;
                 if(data.img) html += `<img src="${data.img}" class="img-preview" alt="Materi Gambar">`;
                 html += `</div>`;
                 container.innerHTML = html;
             } else {
-                container.innerHTML = `<p>Materi hari ini akan muncul di sini. Silakan perhatikan penjelasan guru dengan baik.</p>`;
+                container.innerHTML = `<p style="font-size:13px; color:#666;">Materi belum diunggah oleh Guru.</p>`;
             }
         }
 
@@ -557,21 +564,21 @@
             let html = "";
             if(raw) {
                 let data = JSON.parse(raw);
-                html += `<div style="background:#fff3e0; padding:15px; border-radius:5px; margin-bottom:15px; border-left:4px solid #ff9800;"><h4 style="margin-top:0; color:#e65100;">Instruksi Tugas dari Bapak Guru:</h4>`;
-                if(data.text) html += `<p style="white-space: pre-line;">${data.text}</p>`;
+                html += `<div style="background:#fff3e0; padding:12px; border-radius:6px; margin-bottom:12px; border-left:4px solid #ff9800;"><h4 style="margin-top:0; color:#e65100;">Instruksi Tugas:</h4>`;
+                if(data.text) html += `<p style="white-space: pre-line; margin-bottom:8px;">${data.text}</p>`;
                 if(data.img) html += `<img src="${data.img}" class="img-preview" alt="Instruksi Gambar">`;
                 html += `</div>`;
             }
             html += `
                 <div class="form-group">
-                    <label style="font-weight:bold;">Jawaban Teks / Ringkasan Tugas:</label>
-                    <textarea id="teks-tugas" rows="4" placeholder="Ketik jawaban tugas teks kamu di sini..."></textarea>
+                    <label>Jawaban Teks / Ringkasan:</label>
+                    <textarea id="teks-tugas" rows="3" placeholder="Ketik jawaban kamu..."></textarea>
                 </div>
                 <div class="form-group">
-                    <label style="font-weight:bold;">Unggah Foto / Dokumen Tugas (Opsional):</label>
+                    <label>Unggah Foto Tugas (Opsional):</label>
                     <input type="file" id="file-tugas">
                 </div>
-                <button onclick="uploadTugas()">Kirim Tugas ke Bapak Guru</button>`;
+                <button onclick="uploadTugas()">Kirim Tugas</button>`;
             container.innerHTML = html;
         }
 
@@ -587,7 +594,7 @@
 
             localStorage.setItem("custom_jadwal_harian", JSON.stringify(jadwalObj));
             saveToServer("custom_jadwal_harian", jadwalObj);
-            alert("Jadwal pelajaran harian berhasil diperbarui!");
+            alert("Jadwal pelajaran diperbarui!");
             kirimDataKeSpreadsheet("GURU", "Sistem", "Update Jadwal", JSON.stringify(jadwalObj));
         }
 
@@ -633,10 +640,10 @@
             const btnEl = document.getElementById('btn-isi-absen');
 
             if(status) {
-                textEl.innerHTML = `<strong style="color:#2e7d32;">Terima kasih! Kamu sudah mengisi absensi hari ini pada jam ${status}.</strong>`;
+                textEl.innerHTML = `<strong style="color:#2e7d32;">Terima kasih! Kamu sudah mengisi absensi hari ini jam ${status}.</strong>`;
                 btnEl.style.display = "none";
             } else {
-                textEl.innerText = "Silakan klik tombol di bawah untuk mengisi kehadiran Anda hari ini.";
+                textEl.innerText = "Klik tombol di bawah untuk mengisi kehadiran hari ini:";
                 btnEl.style.display = "inline-block";
             }
         }
@@ -646,7 +653,7 @@
             const time = new Date().toLocaleTimeString();
             localStorage.setItem(`absen_${currentUser}_${today}`, time);
             
-            alert("Absensi kamu berhasil dicatat hari ini!");
+            alert("Absensi berhasil dicatat!");
             kirimDataKeSpreadsheet(currentUser, "Absensi Harian", "Kehadiran", "Hadir");
             checkAbsensi();
         }
@@ -655,18 +662,18 @@
             const customPengumuman = localStorage.getItem("custom_pengumuman");
             const el = document.getElementById('display-pengumuman');
             if(customPengumuman) {
-                el.innerHTML = `<div style="background:#f3e5f5; padding:15px; border-radius:5px; border-left:4px solid #9c27b0;"><p style="white-space: pre-line; margin:0;">${customPengumuman}</p></div>`;
+                el.innerHTML = `<div style="background:#f3e5f5; padding:12px; border-radius:6px; border-left:4px solid #9c27b0;"><p style="white-space: pre-line; margin:0; font-size:14px;">${customPengumuman}</p></div>`;
             } else {
-                el.innerHTML = "<p>Belum ada pengumuman terbaru dari Bapak Guru.</p>";
+                el.innerHTML = "<p style='font-size:13px; color:#666;'>Belum ada pengumuman terbaru.</p>";
             }
         }
 
         function simpanPengumuman() {
             const text = document.getElementById('admin-pengumuman-text').value.trim();
-            if(!text) return alert("Isi pengumuman terlebih dahulu!");
+            if(!text) return alert("Isi pengumuman!");
             localStorage.setItem("custom_pengumuman", text);
             saveToServer("custom_pengumuman", text);
-            alert("Pengumuman berhasil diterbitkan!");
+            alert("Pengumuman diterbitkan!");
             kirimDataKeSpreadsheet("GURU", "Pengumuman", "Terbit Pengumuman", text);
         }
 
@@ -679,7 +686,7 @@
             const optD = document.getElementById('builder-optD').value.trim();
             const kunci = parseInt(document.getElementById('builder-kunci').value);
 
-            if(!soal || !optA || !optB || !optC || !optD) return alert("Lengkapi teks soal dan opsi!");
+            if(!soal || !optA || !optB || !optC || !optD) return alert("Lengkapi soal dan semua pilihan!");
 
             let existingQuiz = JSON.parse(localStorage.getItem(`custom_pg_quiz_${mapel}`)) || [];
             existingQuiz.push({ q: soal, opt: [optA, optB, optC, optD], ans: kunci });
@@ -699,21 +706,21 @@
             const teksInput = document.getElementById('teks-tugas').value.trim();
             const fileInput = document.getElementById('file-tugas');
 
-            if(!teksInput && fileInput.files.length === 0) return alert("Isi jawaban teks atau pilih file foto/dokumen tugas terlebih dahulu!");
+            if(!teksInput && fileInput.files.length === 0) return alert("Isi jawaban teks atau pilih file!");
 
             if(fileInput.files.length > 0) {
                 const file = fileInput.files[0];
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const base64 = e.target.result;
-                    alert(`Tugas sedang dikirim ke Google Drive/Spreadsheet Bapak Guru...`);
+                    alert(`Tugas sedang dikirim ke Spreadsheet Guru...`);
                     kirimDataKeSpreadsheet(currentUser, currentMapel, 'Tugas', teksInput || 'File Tugas Dikirim', base64, file.name, file.type);
                     document.getElementById('teks-tugas').value = "";
                     fileInput.value = "";
                 };
                 reader.readAsDataURL(file);
             } else {
-                alert(`Jawaban teks berhasil dikirim ke Spreadsheet Bapak Guru!`);
+                alert(`Jawaban teks berhasil dikirim!`);
                 kirimDataKeSpreadsheet(currentUser, currentMapel, 'Tugas Teks', teksInput);
                 document.getElementById('teks-tugas').value = "";
             }
@@ -725,10 +732,9 @@
             
             if(savedNilai !== null) {
                 kuisContainer.innerHTML = `
-                    <div style="background:#e8f5e9; padding:20px; border-radius:5px; border:1px solid #4CAF50; text-align:center;">
-                        <h3 style="color:#2e7d32; margin-top:0;">Kamu Sudah Mengerjakan Kuis Ini!</h3>
-                        <p style="font-size:18px;">Nilai Kamu: <strong style="font-size:32px; color:#1b5e20;">${savedNilai}</strong></p>
-                        <p style="color:#555; font-size:14px;">(Kuis hanya boleh dikerjakan 1 kali dan nilai sudah tersimpan di Spreadsheet Bapak Guru)</p>
+                    <div style="background:#e8f5e9; padding:15px; border-radius:6px; border:1px solid #4CAF50; text-align:center;">
+                        <h4 style="color:#2e7d32; margin-top:0;">Sudah Dikerjakan</h4>
+                        <p style="font-size:16px; margin:5px 0;">Nilai Kamu: <strong style="font-size:24px; color:#1b5e20;">${savedNilai}</strong></p>
                     </div>`;
             } else {
                 renderSoalKuis();
@@ -740,12 +746,12 @@
             const customQuizJSON = localStorage.getItem(`custom_pg_quiz_${currentMapel}`);
             let questions = customQuizJSON ? JSON.parse(customQuizJSON) : (sampleQuizzes[currentMapel] || sampleQuizzes["Bahasa Indonesia"]);
 
-            let html = `<p style="color:#d32f2f; font-weight:bold;">Perhatian: Jawablah pertanyaan berikut dengan teliti. Kuis ini hanya bisa dikerjakan 1 kali!</p><form id="quiz-form">`;
+            let html = `<p style="color:#d32f2f; font-weight:bold; font-size:12px;">Perhatian: Kuis hanya bisa dikerjakan 1 kali!</p><form id="quiz-form">`;
             
             questions.forEach((item, index) => {
                 html += `
                     <div class="question-box">
-                        <p style="font-weight:bold; margin-top:0;">${index + 1}. ${item.q}</p>`;
+                        <p style="font-weight:bold; margin-top:0; font-size:14px;">${index + 1}. ${item.q}</p>`;
                 item.opt.forEach((option, optIdx) => {
                     html += `
                         <label class="option-label">
@@ -755,7 +761,7 @@
                 html += `</div>`;
             });
 
-            html += `<button type="button" onclick="submitKuis()" style="background-color:#2196f3; font-weight:bold; padding:12px;">Kirim Jawaban & Selesaikan Kuis</button></form>`;
+            html += `<button type="button" onclick="submitKuis()" style="background-color:#2196f3; padding:12px;">Kirim Jawaban Kuis</button></form>`;
             kuisContainer.innerHTML = html;
         }
 
@@ -775,17 +781,34 @@
                 }
             });
 
-            if(!answeredAll) return alert("Harap jawab semua soal kuis terlebih dahulu!");
+            if(!answeredAll) return alert("Harap jawab semua soal terlebih dahulu!");
 
             const nilai = Math.round((correctCount / questions.length) * 100);
             localStorage.setItem(`kuis_${currentUser}_${currentMapel}`, nilai);
             
-            alert(`Kuis selesai! Kamu menjawab benar ${correctCount} dari ${questions.length} soal.\nNilai Kamu: ${nilai}`);
+            alert(`Kuis selesai! Nilai Kamu: ${nilai}`);
             kirimDataKeSpreadsheet(currentUser, currentMapel, 'Kuis PG', nilai);
             checkKuisStatus();
         }
 
-        // SYNC DENGAN SPREADSHEET (Dua Arah)
+        function resetDataKuis() {
+            localStorage.clear();
+            alert("Status kuis dan absensi di browser ini telah dibersihkan!");
+        }
+
+        function resetKontenGuru() {
+            if(confirm("Hapus semua kuis, materi, dan pengumuman buatan guru?")) {
+                subjects.forEach(sub => {
+                    localStorage.removeItem(`custom_materi_${sub}`);
+                    localStorage.removeItem(`custom_tugas_${sub}`);
+                    localStorage.removeItem(`custom_pg_quiz_${sub}`);
+                });
+                localStorage.removeItem("custom_pengumuman");
+                localStorage.removeItem("custom_jadwal_harian");
+                alert("Semua konten buatan guru telah dibersihkan.");
+            }
+        }
+
         function saveToServer(key, value) {
             fetch(GAS_URL, {
                 method: 'POST',
